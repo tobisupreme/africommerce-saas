@@ -7,7 +7,12 @@ async function login(req, res) {
     if (!user) {
         return res.status(401).send("Invalid crendentials!")
     }
-    const token = await generateJwtToken(user.id)
+    const token = await generateJwtToken({ 
+        user: {
+            id: user._id,
+            username: user.username
+        }
+    })
     res.status(200).json({
         accessToken: token
     })
