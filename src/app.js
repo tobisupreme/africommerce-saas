@@ -14,7 +14,8 @@ connectToDatabase()
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+console.log(path.join(path.resolve(__dirname, '..'), 'views'));
+app.set('views', path.join(path.resolve(__dirname, '..'), 'views'));
 app.set('view engine', 'jade');
 
 app.use(logger('dev'));
